@@ -26,7 +26,6 @@ class TwilioServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        include __DIR__ . '/routes.php';
         App::bind('twilio', function() {
             return new Twilio;
         });
