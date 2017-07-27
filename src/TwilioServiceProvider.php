@@ -14,10 +14,8 @@ class TwilioServiceProvider extends ServiceProvider {
      */
     public function boot() {
         $this->publishes([
-            __DIR__ . '/config/config.php' => config_path('twilio.php'),
-        ]);
-
-        $this->mergeConfigFrom(__DIR__ . '/config/config.php', 'twilio');
+            __DIR__ . '/Config/config.php' => config_path('twilio.php'),
+                ], 'config');
     }
 
     /**
@@ -29,6 +27,7 @@ class TwilioServiceProvider extends ServiceProvider {
         App::bind('twilio', function() {
             return new Twilio;
         });
+        $this->mergeConfigFrom(__DIR__ . '/config/config.php', 'twilio');
     }
 
 }
